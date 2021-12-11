@@ -93,9 +93,45 @@
 <h2 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h2><ul>
 <li>SMTP, POP3, IMAP</li>
 </ul>
-<h2 id="动态主机配置"><a href="#动态主机配置" class="headerlink" title="动态主机配置"></a>动态主机配置</h2><ul>
-<li>DHCP</li>
+<h2 id="动态主机配置"><a href="#动态主机配置" class="headerlink" title="动态主机配置"></a>动态主机配置</h2><p><a href="https://zh.wikipedia.org/wiki/HDCP">DHCP</a></p>
+<blockquote>
+<p>动态主机配置协议: 指的是由服务器控制一段IP地址范围，客户机登录服务器时就可以自动获得服务器分配的IP地址和子网掩码</p>
+</blockquote>
+<ul>
+<li><p>静态<code>IP</code>地址</p>
+<ul>
+<li>手动配置</li>
+<li>适用场景: 不怎么挪动的台式机, 服务器等</li>
 </ul>
+</li>
+<li><p>动态<code>IP</code>地址</p>
+<ul>
+<li>从<code>DHCP</code>服务器自动获取<code>IP</code>地址    </li>
+<li>适用场景: 移动设备, 无线设备等.</li>
+</ul>
+</li>
+<li><p><code>DHCP</code>协议基于<code>UDP</code>协议, 客户端是68端口, 服务器是67端口.</p>
+</li>
+</ul>
+<h3 id="分配IP地址的4个阶段"><a href="#分配IP地址的4个阶段" class="headerlink" title="分配IP地址的4个阶段"></a>分配IP地址的4个阶段</h3><ul>
+<li>DISCOVER: 发现服务器<ul>
+<li>发广播报 </li>
+</ul>
+</li>
+<li>OFFER: 提供租约<ul>
+<li>服务器返回可以租用的<code>IP</code>地址，以及租用期限，子网掩码，网关，DNS等信息. </li>
+</ul>
+</li>
+<li>REQUEST: 选择IP地址<ul>
+<li>客户端选择一个<code>OFFER</code>, 发送广播包进行回应. </li>
+</ul>
+</li>
+<li>ACKNOWLEDGE: 确认<ul>
+<li>被选中的服务器发送<code>ACK</code>数据包给客户端.</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2021/12/11/hpFMyJU34bqstdn.png" title="分配ip地址"></p>
 <h2 id="域名系统"><a href="#域名系统" class="headerlink" title="域名系统"></a>域名系统</h2><h3 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h3><p><code>Domain Name System</code></p>
 <blockquote>
 <p>利用DNS, 可以将域名解析成对应的IP地址.</p>
