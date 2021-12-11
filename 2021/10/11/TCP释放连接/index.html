@@ -22,20 +22,22 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="runtime   消息发送 动态解析 消息转发">
+  <meta name="description" content="TCP连接释放4次挥手 关闭连接 为什么释放连接的时候，要进行4次挥手?">
 <meta property="og:type" content="article">
-<meta property="og:title" content="runtime源码解读(1)">
-<meta property="og:url" content="http://example.com/2021/12/01/runtime%E5%BA%95%E5%B1%82%E6%8E%A2%E7%A9%B6/index.html">
+<meta property="og:title" content="TCP释放连接">
+<meta property="og:url" content="http://example.com/2021/10/11/TCP%E9%87%8A%E6%94%BE%E8%BF%9E%E6%8E%A5/index.html">
 <meta property="og:site_name" content="SummerHF&#39;s Blog">
-<meta property="og:description" content="runtime   消息发送 动态解析 消息转发">
+<meta property="og:description" content="TCP连接释放4次挥手 关闭连接 为什么释放连接的时候，要进行4次挥手?">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-12-01T09:51:33.000Z">
-<meta property="article:modified_time" content="2021-12-11T04:09:06.663Z">
+<meta property="og:image" content="https://s2.loli.net/2021/12/11/q4OjcxgCykJ6ALh.png">
+<meta property="article:published_time" content="2021-10-11T02:13:03.000Z">
+<meta property="article:modified_time" content="2021-12-11T04:09:46.572Z">
 <meta property="article:author" content="SummerHF">
-<meta property="article:tag" content="runtime c">
+<meta property="article:tag" content="TCP 网络 传输层">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2021/12/11/q4OjcxgCykJ6ALh.png">
 
-<link rel="canonical" href="http://example.com/2021/12/01/runtime%E5%BA%95%E5%B1%82%E6%8E%A2%E7%A9%B6/">
+<link rel="canonical" href="http://example.com/2021/10/11/TCP%E9%87%8A%E6%94%BE%E8%BF%9E%E6%8E%A5/">
 
 
 <script id="page-configurations">
@@ -48,7 +50,7 @@
   };
 </script>
 
-  <title>runtime源码解读(1) | SummerHF's Blog</title>
+  <title>TCP释放连接 | SummerHF's Blog</title>
   
 
 
@@ -199,7 +201,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/01/runtime%E5%BA%95%E5%B1%82%E6%8E%A2%E7%A9%B6/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/11/TCP%E9%87%8A%E6%94%BE%E8%BF%9E%E6%8E%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/../images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20211130215728.jpg">
@@ -212,7 +214,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          runtime源码解读(1)
+          TCP释放连接
         </h1>
 
         <div class="post-meta">
@@ -222,14 +224,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-12-01 17:51:33" itemprop="dateCreated datePublished" datetime="2021-12-01T17:51:33+08:00">2021-12-01</time>
+              <time title="创建时间：2021-10-11 10:13:03" itemprop="dateCreated datePublished" datetime="2021-10-11T10:13:03+08:00">2021-10-11</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-11 12:09:06" itemprop="dateModified" datetime="2021-12-11T12:09:06+08:00">2021-12-11</time>
+                <time title="修改时间：2021-12-11 12:09:46" itemprop="dateModified" datetime="2021-12-11T12:09:46+08:00">2021-12-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -237,11 +239,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
+                  <a href="/categories/%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">网络</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/runtime/" itemprop="url" rel="index"><span itemprop="name">runtime</span></a>
+                  <a href="/categories/%E7%BD%91%E7%BB%9C/TCP%E5%8D%8F%E8%AE%AE/" itemprop="url" rel="index"><span itemprop="name">TCP协议</span></a>
                 </span>
             </span>
 
@@ -251,7 +253,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>241</span>
+              <span>315</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -270,23 +272,33 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <blockquote>
-<p>runtime</p>
+        <h1 id="TCP连接释放"><a href="#TCP连接释放" class="headerlink" title="TCP连接释放"></a>TCP连接释放</h1><h3 id="4次挥手-关闭连接"><a href="#4次挥手-关闭连接" class="headerlink" title="4次挥手 关闭连接"></a>4次挥手 关闭连接</h3><blockquote>
+<p>为什么释放连接的时候，要进行4次挥手?</p>
 </blockquote>
-<ul>
-<li>消息发送</li>
-<li>动态解析</li>
-<li>消息转发</li>
-</ul>
 <span id="more"></span>
 
-<p><a target="_blank" rel="noopener" href="https://blog.mrzorg.top/categories/Hexo/">参考链接1</a></p>
-<p><a target="_blank" rel="noopener" href="https://tding.top/tags/">参考链接2</a></p>
-<p><a target="_blank" rel="noopener" href="http://yearito.cn/posts/hexo-writing-skills.html">参考链接3</a></p>
-<p><a target="_blank" rel="noopener" href="http://yearito.cn/posts/hexo-theme-beautify.html">参考链接4</a></p>
-<!-- more -->
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">calendar:</span><br><span class="line">  calendar_id: &lt;required&gt; # Your Google account E-Mail</span><br><span class="line">  api_key: &lt;required&gt;</span><br><span class="line">  orderBy: startTime</span><br><span class="line">  offsetMax: <span class="number">24</span> # Time Range</span><br><span class="line">  offsetMin: <span class="number">4</span> # Time Range</span><br><span class="line">  showDeleted: <span class="literal">false</span></span><br><span class="line">  singleEvents: <span class="literal">true</span></span><br><span class="line">  maxResults: <span class="number">250</span></span><br></pre></td></tr></table></figure>
+<h3 id="TCP是全双工模式"><a href="#TCP是全双工模式" class="headerlink" title="TCP是全双工模式."></a>TCP是全双工模式.</h3><ul>
+<li>第一次挥手: 当<strong>主机1</strong>发出<strong>FIN</strong>报文段时<ul>
+<li>表示<strong>主机1</strong>告诉<strong>主机2</strong>, 主机1已经没有数据要发送了, 但是, 此时<strong>主机1</strong>还是可以接受来自<strong>主机2</strong>的数据.</li>
+</ul>
+</li>
+<li>第二次挥手: 当<strong>主机2</strong>返回ACK报文段时<ul>
+<li>表示<strong>主机2</strong>已经知道<strong>主机1</strong>没有数据发送了，但是<strong>主机2</strong>还是可以发送数据到<strong>主机1</strong>的</li>
+</ul>
+</li>
+<li>第三次挥手: 当<strong>主机2</strong>也发送了FIN报文段时<ul>
+<li>表示<strong>主机2</strong>告诉<strong>主机1</strong>， <strong>主机2</strong>已经没有数据要发送了</li>
+</ul>
+</li>
+<li>第四次挥手: 当<strong>主机1</strong>返回ACK报文段时<ul>
+<li>表示<strong>主机1</strong>已经知道<strong>主机2</strong>没有数据发送了, 随后正式断开整个TCP连接.  </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>相互确认，随后断开连接. TCP/IP协议栈允许接收方和发送方任意一方都可以主动发送断开连接的请求.</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://s2.loli.net/2021/12/11/q4OjcxgCykJ6ALh.png"><img src="https://s2.loli.net/2021/12/11/q4OjcxgCykJ6ALh.png" title="TCP断开连接过程示意图"></a></p>
 
     </div>
 
@@ -308,7 +320,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/runtime-c/" rel="tag"># runtime c</a>
+              <a href="/tags/TCP-%E7%BD%91%E7%BB%9C-%E4%BC%A0%E8%BE%93%E5%B1%82/" rel="tag"># TCP 网络 传输层</a>
           </div>
 
         
@@ -316,11 +328,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2021/10/11/TCP%E9%87%8A%E6%94%BE%E8%BF%9E%E6%8E%A5/" rel="prev" title="TCP释放连接">
-      <i class="fa fa-chevron-left"></i> TCP释放连接
-    </a></div>
       <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/12/01/runtime%E5%BA%95%E5%B1%82%E6%8E%A2%E7%A9%B6/" rel="next" title="runtime源码解读(1)">
+      runtime源码解读(1) <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -379,6 +391,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP%E8%BF%9E%E6%8E%A5%E9%87%8A%E6%94%BE"><span class="nav-number">1.</span> <span class="nav-text">TCP连接释放</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E6%AC%A1%E6%8C%A5%E6%89%8B-%E5%85%B3%E9%97%AD%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.0.1.</span> <span class="nav-text">4次挥手 关闭连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP%E6%98%AF%E5%85%A8%E5%8F%8C%E5%B7%A5%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.0.2.</span> <span class="nav-text">TCP是全双工模式.</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
