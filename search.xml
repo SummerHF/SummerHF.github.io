@@ -27,16 +27,19 @@
 </li>
 </ul>
 <blockquote>
-<p>相互确认，随后断开连接. TCP/IP协议栈允许接收方和发送方任意一方都可以主动发送断开连接的请求.</p>
+<p>TCP/IP协议栈允许接收方和发送方任意一方都可以主动发送断开连接的请求.</p>
 </blockquote>
-<p><a href="https://s2.loli.net/2021/12/11/q4OjcxgCykJ6ALh.png"><img src="https://s2.loli.net/2021/12/11/q4OjcxgCykJ6ALh.png" title="TCP断开连接过程示意图"></a></p>
+<ul>
+<li><strong>clien</strong>发送ACK后, 需要有个<strong>TIME-WAIT</strong>阶段, 等待一段时间后, 再真正关闭连接.</li>
+</ul>
+<p><img src="https://s2.loli.net/2021/12/11/q4OjcxgCykJ6ALh.png" title="TCP断开连接过程示意图"></p>
 ]]></content>
       <categories>
         <category>网络</category>
         <category>TCP协议</category>
       </categories>
       <tags>
-        <tag>TCP 网络 传输层</tag>
+        <tag>网络 传输层 TCP</tag>
       </tags>
   </entry>
   <entry>
@@ -66,6 +69,47 @@
       </categories>
       <tags>
         <tag>runtime c</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>应用层协议探究</title>
+    <url>/2021/09/11/%E5%BA%94%E7%94%A8%E5%B1%82%E6%8E%A2%E7%A9%B6/</url>
+    <content><![CDATA[<h1 id="应用层常见协议"><a href="#应用层常见协议" class="headerlink" title="应用层常见协议"></a>应用层常见协议</h1><div class="note info">
+            <p>应用层（英语：Application layer）位于OSI模型的第七层。应用层直接和应用程序接口结合，并提供常见的网络应用服务。应用层也向第六层表示层发出请求。</p>
+          </div>
+
+<span id="more"></span>
+
+<blockquote>
+<p>网络互联模型</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2021/12/11/7h5OCdfR9HMEnZl.png" title="网络分层模型示意图"></p>
+<h2 id="超文本传输"><a href="#超文本传输" class="headerlink" title="超文本传输"></a>超文本传输</h2><ul>
+<li>HTTP, HTTPS</li>
+</ul>
+<h2 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h2><ul>
+<li>FTP</li>
+</ul>
+<h2 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h2><ul>
+<li>SMTP, POP3, IMAP</li>
+</ul>
+<h2 id="动态主机配置"><a href="#动态主机配置" class="headerlink" title="动态主机配置"></a>动态主机配置</h2><ul>
+<li>DHCP</li>
+</ul>
+<h2 id="域名系统"><a href="#域名系统" class="headerlink" title="域名系统"></a>域名系统</h2><h3 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h3><p><code>Domain Name System</code></p>
+<blockquote>
+<p>利用DNS, 可以将域名解析成对应的IP地址.</p>
+</blockquote>
+<blockquote>
+<p>DNS可以基于UDP协议，也可以基于TCP协议, 服务器占用53端口.</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>网络</category>
+        <category>应用层</category>
+      </categories>
+      <tags>
+        <tag>网络 应用层</tag>
       </tags>
   </entry>
 </search>
