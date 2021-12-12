@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://s2.loli.net/2021/12/11/xMy74RfGjoKiz8N.png">
 <meta property="og:image" content="https://s2.loli.net/2021/12/11/hpFMyJU34bqstdn.png">
 <meta property="article:published_time" content="2021-09-11T07:06:03.000Z">
-<meta property="article:modified_time" content="2021-12-11T15:54:08.511Z">
+<meta property="article:modified_time" content="2021-12-12T03:56:50.736Z">
 <meta property="article:author" content="SummerHF">
 <meta property="article:tag" content="网络 应用层">
 <meta name="twitter:card" content="summary">
@@ -237,7 +237,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-11 23:54:08" itemprop="dateModified" datetime="2021-12-11T23:54:08+08:00">2021-12-11</time>
+                <time title="修改时间：2021-12-12 11:56:50" itemprop="dateModified" datetime="2021-12-12T11:56:50+08:00">2021-12-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,7 +273,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
+              <span>2.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -303,12 +303,20 @@
 <h3 id="报文格式"><a href="#报文格式" class="headerlink" title="报文格式"></a>报文格式</h3><p><img src="https://s2.loli.net/2021/12/11/kRwtOagl4Ids7Kb.png" title="报文格式 "></p>
 <p><code>ABNF</code>是最严谨的<code>HTTP</code>报文格式描述形式, 如下所示: </p>
 <figure class="highlight abnf"><figcaption><span>ABNF实例</span><a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc7230#section-3">RFC</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">HTTP-message</span>   = start-line</span><br><span class="line">                      *( header-field <span class="keyword">CRLF</span> )</span><br><span class="line">                      <span class="keyword">CRLF</span></span><br><span class="line">                      [ message-body ]</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s2.loli.net/2021/12/11/DvURQt42qjCdISn.png" title="ABNF图解"></p>
+<blockquote>
+<p>示例图</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2021/12/11/DvURQt42qjCdISn.png"></p>
 <figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">start-line</span>     = request-line / status-line</span><br><span class="line"><span class="attribute">request-line</span>   = method <span class="keyword">SP</span> request-target <span class="keyword">SP</span> HTTP-version <span class="keyword">CRLF</span></span><br><span class="line"><span class="attribute">status-line</span> = HTTP-version <span class="keyword">SP</span> status-code <span class="keyword">SP</span> reason-phrase <span class="keyword">CRLF</span> </span><br><span class="line"><span class="attribute">reason-phrase</span>  = *( <span class="keyword">HTAB</span> / <span class="keyword">SP</span> / <span class="keyword">VCHAR</span> / obs-text )</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://s2.loli.net/2021/12/11/OQIKA8q6n1YujS3.png" title="报文格式-header-filed, message-body"></p>
-<p><img src="https://s2.loli.net/2021/12/11/xMy74RfGjoKiz8N.png" title="ABNF-核心规则"></p>
+<blockquote>
+<p>报文格式</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2021/12/11/OQIKA8q6n1YujS3.png"></p>
+<blockquote>
+<p>Rules</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2021/12/11/xMy74RfGjoKiz8N.png"></p>
 <h3 id="URL的编码"><a href="#URL的编码" class="headerlink" title="URL的编码"></a>URL的编码</h3><p><code>URL</code>中一旦出现了一些特殊字符(比如中文，空格)，需要进行<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BC%96%E7%A0%81">编码</a>. 在浏览器的地址栏输入<code>URL</code>时, 采用<code>URF-8</code>进行编码.</p>
 <h3 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a>请求方法</h3><ul>
 <li><p><code>GET</code>: 请求向指定的资源发出“显示”请求。使用<code>GET</code>方法应该只用在读取资料，而不应当被用于产生“副作用”的操作中，例如在网络应用程序中。其中一个原因是<code>GET</code>可能会被网络爬虫等随意访问。浏览器直接发出的<code>GET</code>只能由一个url触发。<code>GET</code>上要在<code>url</code>之外带一些参数就只能依靠<code>url</code>上附带<code>querystring</code>。<code>GET</code>请求<code>URI</code>有长度限制，所以如果请求参数过多，还是需要适用<code>POST</code>请求.</p>
@@ -400,7 +408,46 @@
 <td><code>no-cache</code></td>
 </tr>
 </tbody></table>
-<h3 id="响应头字段"><a href="#响应头字段" class="headerlink" title="响应头字段"></a>响应头字段</h3><h3 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h3><h2 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h2><ul>
+<h3 id="响应头字段"><a href="#响应头字段" class="headerlink" title="响应头字段"></a>响应头字段</h3><table>
+<thead>
+<tr>
+<th>头字段名</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Content-Type</td>
+<td>响应体的类型</td>
+<td>text/html</td>
+</tr>
+<tr>
+<td>Content-Encoding</td>
+<td>内容所使用的编码类型</td>
+<td>gzip</td>
+</tr>
+<tr>
+<td>Content-Length</td>
+<td>响应体的长度(字节为单位)</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Content-Disposition</td>
+<td>一个可以让客户端下载文件并建议文件名的头部</td>
+<td><code>attachment; filename=&quot;fname.txt&quot;</code></td>
+</tr>
+<tr>
+<td>Accept-Ranges</td>
+<td>服务器支持那些种类的部分内容范围</td>
+<td><code>bytes</code></td>
+</tr>
+<tr>
+<td>Content-Range</td>
+<td>这条消息是属于完整消息的那部分</td>
+<td><code>Content-Range: bytes 21010-323/4343</code></td>
+</tr>
+</tbody></table>
+<h3 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h3><h2 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h2><ul>
 <li>FTP</li>
 </ul>
 <h2 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h2><ul>
@@ -622,7 +669,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2 分钟</span>
+    <span title="站点阅读时长">3 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
