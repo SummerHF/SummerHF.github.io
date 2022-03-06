@@ -1,74 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>TCP释放连接</title>
-    <url>/2021/10/11/TCP%E9%87%8A%E6%94%BE%E8%BF%9E%E6%8E%A5/</url>
-    <content><![CDATA[<h1 id="TCP连接释放"><a href="#TCP连接释放" class="headerlink" title="TCP连接释放"></a>TCP连接释放</h1><h3 id="4次挥手-关闭连接"><a href="#4次挥手-关闭连接" class="headerlink" title="4次挥手 关闭连接"></a>4次挥手 关闭连接</h3><blockquote>
-<p>为什么释放连接的时候，要进行4次挥手?</p>
-</blockquote>
+    <title>SwiftUI中的属性包装器(Property Wrapper)一览</title>
+    <url>/2022/03/06/SwiftUI%E4%B8%AD%E7%9A%84%E5%B1%9E%E6%80%A7%E4%BF%AE%E9%A5%B0%E7%AC%A6/</url>
+    <content><![CDATA[<h1 id="SwiftUI中的常见属性包装器"><a href="#SwiftUI中的常见属性包装器" class="headerlink" title="SwiftUI中的常见属性包装器"></a>SwiftUI中的常见属性包装器</h1><p><code>Property Wrapper</code>是<code>Swift</code>语言的新特性, 它使我们能够自定义类型并在各处使用, 该类型实现<code>get</code>和<code>set</code>方法的功能. 在本文中, 将列举<code>SwiftUI</code>中常见的属性包装器.</p>
 <span id="more"></span>
 
-<h3 id="TCP是全双工模式"><a href="#TCP是全双工模式" class="headerlink" title="TCP是全双工模式."></a>TCP是全双工模式.</h3><ul>
-<li>第一次挥手: 当<strong>主机1</strong>发出<strong>FIN</strong>报文段时<ul>
-<li>表示<strong>主机1</strong>告诉<strong>主机2</strong>, 主机1已经没有数据要发送了, 但是, 此时<strong>主机1</strong>还是可以接受来自<strong>主机2</strong>的数据.</li>
-</ul>
-</li>
-<li>第二次挥手: 当<strong>主机2</strong>返回ACK报文段时<ul>
-<li>表示<strong>主机2</strong>已经知道<strong>主机1</strong>没有数据发送了，但是<strong>主机2</strong>还是可以发送数据到<strong>主机1</strong>的</li>
-</ul>
-</li>
-<li>第三次挥手: 当<strong>主机2</strong>也发送了FIN报文段时<ul>
-<li>表示<strong>主机2</strong>告诉<strong>主机1</strong>， <strong>主机2</strong>已经没有数据要发送了</li>
-</ul>
-</li>
-<li>第四次挥手: 当<strong>主机1</strong>返回ACK报文段时<ul>
-<li>表示<strong>主机1</strong>已经知道<strong>主机2</strong>没有数据发送了, 随后正式断开整个TCP连接.  </li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>TCP/IP协议栈允许接收方和发送方任意一方都可以主动发送断开连接的请求.</p>
+<h3 id="State"><a href="#State" class="headerlink" title="@State"></a>@State</h3><blockquote>
+<p>由<code>SwiftUI</code>管理的可读写的属性包装器, 当修饰的属性值改变的时候，界面也会随之更新. 由@State包装的属性通常使用<code>Prive</code>修饰, 在<code>body</code>内使用.</p>
 </blockquote>
+<h3 id="Binding"><a href="#Binding" class="headerlink" title="@Binding"></a>@Binding</h3><blockquote>
+<p>数据的双向绑定</p>
+</blockquote>
+<h3 id="ObservedObject-Published-ObservableObject"><a href="#ObservedObject-Published-ObservableObject" class="headerlink" title="ObservedObject Published ObservableObject"></a>ObservedObject Published ObservableObject</h3><h3 id="Environment-EnvironmentValues-EnvironmentObject"><a href="#Environment-EnvironmentValues-EnvironmentObject" class="headerlink" title="Environment EnvironmentValues EnvironmentObject"></a>Environment EnvironmentValues EnvironmentObject</h3><h2 id="Property-Wrapper使用"><a href="#Property-Wrapper使用" class="headerlink" title="Property Wrapper使用"></a>Property Wrapper使用</h2><p>对于属性包装器<code>Property Wrapper</code>类型, 有两个要求</p>
 <ul>
-<li><strong>clien</strong>发送ACK后, 需要有个<strong>TIME-WAIT</strong>阶段, 等待一段时间后, 再真正关闭连接.</li>
+<li>必须使用属性@propertyWrapper进行定义</li>
+<li>它必须具有wrappedValue属性</li>
 </ul>
-<p><img src="https://s2.loli.net/2021/12/11/q4OjcxgCykJ6ALh.png" title="TCP断开连接过程示意图"></p>
+<p><a href="https://juejin.cn/post/6844904018121064456">参考</a></p>
 ]]></content>
       <categories>
-        <category>网络</category>
-        <category>TCP协议</category>
+        <category>SwiftUI</category>
       </categories>
       <tags>
-        <tag>网络 传输层 TCP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>runtime源码解读(1)</title>
-    <url>/2021/12/01/runtime%E5%BA%95%E5%B1%82%E6%8E%A2%E7%A9%B6/</url>
-    <content><![CDATA[<blockquote>
-<p>runtime</p>
-</blockquote>
-<ul>
-<li>消息发送</li>
-<li>动态解析</li>
-<li>消息转发</li>
-</ul>
-<span id="more"></span>
-
-<p><a href="https://blog.mrzorg.top/categories/Hexo/">参考链接1</a></p>
-<p><a href="https://tding.top/tags/">参考链接2</a></p>
-<p><a href="http://yearito.cn/posts/hexo-writing-skills.html">参考链接3</a></p>
-<p><a href="http://yearito.cn/posts/hexo-theme-beautify.html">参考链接4</a></p>
-<!-- more -->
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">calendar:</span><br><span class="line">  calendar_id: &lt;required&gt; # Your Google account E-Mail</span><br><span class="line">  api_key: &lt;required&gt;</span><br><span class="line">  orderBy: startTime</span><br><span class="line">  offsetMax: <span class="number">24</span> # Time Range</span><br><span class="line">  offsetMin: <span class="number">4</span> # Time Range</span><br><span class="line">  showDeleted: <span class="literal">false</span></span><br><span class="line">  singleEvents: <span class="literal">true</span></span><br><span class="line">  maxResults: <span class="number">250</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Objective-C</category>
-        <category>runtime</category>
-      </categories>
-      <tags>
-        <tag>runtime c</tag>
+        <tag>SwiftUI Property Wrapper</tag>
       </tags>
   </entry>
   <entry>

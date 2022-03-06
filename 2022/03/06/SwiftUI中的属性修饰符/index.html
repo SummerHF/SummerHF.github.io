@@ -23,15 +23,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="SummerHF&#39;s Blog">
-<meta property="og:url" content="http://example.com/tags/runtime-c/index.html">
+  <meta name="description" content="SwiftUI中的常见属性包装器Property Wrapper是Swift语言的新特性, 它使我们能够自定义类型并在各处使用, 该类型实现get和set方法的功能. 在本文中, 将列举SwiftUI中常见的属性包装器.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SwiftUI中的属性包装器(Property Wrapper)一览">
+<meta property="og:url" content="http://example.com/2022/03/06/SwiftUI%E4%B8%AD%E7%9A%84%E5%B1%9E%E6%80%A7%E4%BF%AE%E9%A5%B0%E7%AC%A6/index.html">
 <meta property="og:site_name" content="SummerHF&#39;s Blog">
+<meta property="og:description" content="SwiftUI中的常见属性包装器Property Wrapper是Swift语言的新特性, 它使我们能够自定义类型并在各处使用, 该类型实现get和set方法的功能. 在本文中, 将列举SwiftUI中常见的属性包装器.">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-06T04:08:33.000Z">
+<meta property="article:modified_time" content="2022-03-06T05:45:54.913Z">
 <meta property="article:author" content="SummerHF">
+<meta property="article:tag" content="SwiftUI Property Wrapper">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/tags/runtime-c/">
+<link rel="canonical" href="http://example.com/2022/03/06/SwiftUI%E4%B8%AD%E7%9A%84%E5%B1%9E%E6%80%A7%E4%BF%AE%E9%A5%B0%E7%AC%A6/">
 
 
 <script id="page-configurations">
@@ -39,12 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: runtime c | SummerHF's Blog</title>
+  <title>SwiftUI中的属性包装器(Property Wrapper)一览 | SummerHF's Blog</title>
   
 
 
@@ -188,57 +193,150 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/06/SwiftUI%E4%B8%AD%E7%9A%84%E5%B1%9E%E6%80%A7%E4%BF%AE%E9%A5%B0%E7%AC%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/../images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20211130215728.jpg">
+      <meta itemprop="name" content="SummerHF">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SummerHF's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SwiftUI中的属性包装器(Property Wrapper)一览
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-06 12:08:33 / 修改时间：13:45:54" itemprop="dateCreated datePublished" datetime="2022-03-06T12:08:33+08:00">2022-03-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SwiftUI/" itemprop="url" rel="index"><span itemprop="name">SwiftUI</span></a>
+                </span>
+            </span>
+
+          
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">runtime c
-          <small>标签</small>
-        </h2>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/03/06/SwiftUI%E4%B8%AD%E7%9A%84%E5%B1%9E%E6%80%A7%E4%BF%AE%E9%A5%B0%E7%AC%A6/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/06/SwiftUI%E4%B8%AD%E7%9A%84%E5%B1%9E%E6%80%A7%E4%BF%AE%E9%A5%B0%E7%AC%A6/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>380</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        <h1 id="SwiftUI中的常见属性包装器"><a href="#SwiftUI中的常见属性包装器" class="headerlink" title="SwiftUI中的常见属性包装器"></a>SwiftUI中的常见属性包装器</h1><p><code>Property Wrapper</code>是<code>Swift</code>语言的新特性, 它使我们能够自定义类型并在各处使用, 该类型实现<code>get</code>和<code>set</code>方法的功能. 在本文中, 将列举<code>SwiftUI</code>中常见的属性包装器.</p>
+<span id="more"></span>
+
+<h3 id="State"><a href="#State" class="headerlink" title="@State"></a>@State</h3><blockquote>
+<p>由<code>SwiftUI</code>管理的可读写的属性包装器, 当修饰的属性值改变的时候，界面也会随之更新. 由@State包装的属性通常使用<code>Prive</code>修饰, 在<code>body</code>内使用.</p>
+</blockquote>
+<h3 id="Binding"><a href="#Binding" class="headerlink" title="@Binding"></a>@Binding</h3><blockquote>
+<p>数据的双向绑定</p>
+</blockquote>
+<h3 id="ObservedObject-Published-ObservableObject"><a href="#ObservedObject-Published-ObservableObject" class="headerlink" title="ObservedObject Published ObservableObject"></a>ObservedObject Published ObservableObject</h3><h3 id="Environment-EnvironmentValues-EnvironmentObject"><a href="#Environment-EnvironmentValues-EnvironmentObject" class="headerlink" title="Environment EnvironmentValues EnvironmentObject"></a>Environment EnvironmentValues EnvironmentObject</h3><h2 id="Property-Wrapper使用"><a href="#Property-Wrapper使用" class="headerlink" title="Property Wrapper使用"></a>Property Wrapper使用</h2><p>对于属性包装器<code>Property Wrapper</code>类型, 有两个要求</p>
+<ul>
+<li>必须使用属性@propertyWrapper进行定义</li>
+<li>它必须具有wrappedValue属性</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904018121064456">参考</a></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-12-01T17:51:33+08:00"
-              content="2021-12-01">
-          12-01
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/12/01/runtime%E5%BA%95%E5%B1%82%E6%8E%A2%E7%A9%B6/" itemprop="url">
-            <span itemprop="name">runtime源码解读(1)</span>
-          </a>
-      </div>
+    
+    
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            ------------- 本文结束<i class="fa fa-heart-o"></i>感谢您的阅读-------------
+        </div>
+    
+    </div>
 
-    </header>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SwiftUI-Property-Wrapper/" rel="tag"># SwiftUI Property Wrapper</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/11/%E5%BA%94%E7%94%A8%E5%B1%82%E6%8E%A2%E7%A9%B6/" rel="prev" title="应用层协议探究">
+      <i class="fa fa-chevron-left"></i> 应用层协议探究
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -285,6 +383,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SwiftUI%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%B1%9E%E6%80%A7%E5%8C%85%E8%A3%85%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">SwiftUI中的常见属性包装器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#State"><span class="nav-number">1.0.1.</span> <span class="nav-text">@State</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binding"><span class="nav-number">1.0.2.</span> <span class="nav-text">@Binding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ObservedObject-Published-ObservableObject"><span class="nav-number">1.0.3.</span> <span class="nav-text">ObservedObject Published ObservableObject</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Environment-EnvironmentValues-EnvironmentObject"><span class="nav-number">1.0.4.</span> <span class="nav-text">Environment EnvironmentValues EnvironmentObject</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Property-Wrapper%E4%BD%BF%E7%94%A8"><span class="nav-number">1.1.</span> <span class="nav-text">Property Wrapper使用</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -300,20 +399,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -345,7 +444,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
